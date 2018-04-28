@@ -1,0 +1,17 @@
+{
+  "name": "@apicase/spawner",
+  "version": "0.1.0",
+  "description": "Painless control of your apicase requests",
+  "main": "index.js",
+  "repository": "https://github.com/apicase/spawner",
+  "author": "Anton Kosykh <kelin2025@yandex.ru>",
+  "license": "MIT",
+  "dependencies": {
+    "@apicase/core": "^0.13.1",
+    "delightful-bus": "^0.4.2",
+    "nanoutils": "^0.0.20"
+  },
+  "devDependencies": {
+    "size-limit": "^0.17.0"
+  }
+}
