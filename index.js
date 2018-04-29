@@ -28,24 +28,43 @@ const modes = {
     }, options.delay)
     state.queue.push(placeholder)
   },
-  queue({ state, placeholder, createRequest }) {
+  queue({ state, options, placeholder, createRequest }) {
     const last = state.queue.slice(-1)[0]
     if (last) {
-      last.on("finish", createRequest)
+      last.on(
+        "finish",
+        options.delay
+          ? createRequest
+          : () => {
+              setTimeout(createRequest, options.delay)
+            }
+      )
     } else {
       createRequest()
     }
     state.queue.push(placeholder)
   },
-  interval({ state, spawner, reqOptions, placeholder, createRequest }) {
-    createRequest()
-    placeholder.on("finish", () => {
-      spawner.spawn(reqOptions)
+  interval({
+    state,
+    spawner,
+    options,
+    reqOptions,
+    placeholder,
+    createRequest
+  }) {
+    const interval = setInterval(() => {
+      createRequest()
+    }, options.delay)
+    placeholder.on("cancel", () => {
+      clearInterval(interval)
     })
     state.queue.push(placeholder)
   },
   delay({ state, options, reqOptions, placeholder, createRequest }) {
-    setTimeout(createRequest, options.delay)
+    const timer = setTimeout(createRequest, options.delay)
+    placeholder.on("cancel", () => {
+      clearTimeout(timer)
+    })
     state.queue.push(placeholder)
   },
   default({ state, placeholder, createRequest }) {
