@@ -149,7 +149,7 @@ const spawner = new ApiSpawner({
 
 /* 
   Just like spawner has cooldown 
-  Won't spawn if you try too fast 
+  Won't spawn next till time's up 
 */
 spawner.spawn({ url: "/ping" })
 spawner.spawn({ url: "/ping" })
