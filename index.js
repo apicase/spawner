@@ -161,10 +161,7 @@ export function ApiSpawner(options) {
       spawner: this,
       reqOptions: reqOptions,
       placeholder: placeholder,
-      createRequest: () => placeholder.setRequest(createReq(reqOptions)),
-      pushCallback: () => {
-        spawnerState.queue.push(placeholder)
-      }
+      createRequest: () => placeholder.setRequest(createReq(reqOptions))
     })
     return placeholder
   }
