@@ -4,9 +4,6 @@ import { apicase, mergeOptions } from "@apicase/core"
 
 const stripAdapter = omit(["adapter"])
 
-const getDelay = ({ options, state }) =>
-  options.leading && !state.queue.length ? 0 : options.delay
-
 const modes = {
   debounce({ state, options, reqOptions, placeholder, createRequest }) {
     const last = state.queue.slice(-1)[0]
@@ -109,11 +106,7 @@ export function ApiSpawner(options) {
   const spawnerOptions = {
     base: options.base || {},
     delay: options.time || 0,
-    mode: options.mode || "default",
-    leading: options.leading || false,
-    once: options.once || false,
-    timeout: options.timeout || 0,
-    continueOnFail: options.continueOnFail || false
+    mode: options.mode || "default"
   }
 
   const bus = new Eventbus()
