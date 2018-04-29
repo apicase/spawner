@@ -88,19 +88,16 @@ export function IncomingRequest() {
   })
 
   this.setRequest = req => {
-    // timer = setTimeout(() => {
     bus.emit("receive", req)
     request = bus.sendTo(req)
     this.on = req.on
     this.then = req.then
     this.catch = req.catch
-    // }, delay);
   }
 
   this.cancel = () => {
     return Promise.resolve(request ? request.cancel() : null).then(() => {
       bus.emit("cancel")
-      // clearTimeout(timer);
     })
   }
 
