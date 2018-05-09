@@ -10,7 +10,7 @@
     "size": "size-limit"
   },
   "dependencies": {
-    "@apicase/core": "^0.13.1",
+    "@apicase/core": "^0.14.4",
     "delightful-bus": "^0.7.2",
     "nanoutils": "^0.0.20"
   },
