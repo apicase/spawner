@@ -851,9 +851,9 @@ delegates@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
 
-delightful-bus@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/delightful-bus/-/delightful-bus-0.5.0.tgz#30e9f9235f54303c367b9e7acdd710139cad2622"
+delightful-bus@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/delightful-bus/-/delightful-bus-0.7.0.tgz#aeae5039b9cddce285a5ab46e7cd6dc400fddcba"
 
 depd@1.1.1:
   version "1.1.1"
