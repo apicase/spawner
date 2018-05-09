@@ -110,7 +110,7 @@ export function ApiSpawner(options) {
   }
 
   const bus = new Eventbus()
-  bus.injectTo(this)
+  bus.injectObserverTo(this)
 
   const spawnerState = {
     isCalled: false,
