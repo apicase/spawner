@@ -73,7 +73,7 @@ const modes = {
 export function IncomingRequest() {
   const bus = new Eventbus()
 
-  this.on = bus.on
+  bus.injectObserverTo(this)
 
   let request
 
@@ -88,6 +88,8 @@ export function IncomingRequest() {
     bus.emit("receive", req)
     request = bus.sendTo(req)
     this.on = req.on
+    this.off = req.off
+    this.once = req.once
     this.then = req.then
     this.catch = req.catch
   }
