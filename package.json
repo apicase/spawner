@@ -1,6 +1,6 @@
 {
   "name": "@apicase/spawner",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Painless control of your apicase requests",
   "main": "index.js",
   "repository": "https://github.com/apicase/spawner",
