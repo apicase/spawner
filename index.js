@@ -28,7 +28,7 @@ const modes = {
   queue({ state, options, placeholder, createRequest }) {
     const last = state.queue.slice(-1)[0]
     if (last) {
-      last.on(
+      last.once(
         "finish",
         options.delay
           ? createRequest
@@ -52,14 +52,14 @@ const modes = {
     const interval = setInterval(() => {
       createRequest()
     }, options.delay)
-    placeholder.on("cancel", () => {
+    placeholder.once("cancel", () => {
       clearInterval(interval)
     })
     state.queue.push(placeholder)
   },
   delay({ state, options, reqOptions, placeholder, createRequest }) {
     const timer = setTimeout(createRequest, options.delay)
-    placeholder.on("cancel", () => {
+    placeholder.once("cancel", () => {
       clearTimeout(timer)
     })
     state.queue.push(placeholder)
@@ -78,8 +78,8 @@ export function IncomingRequest() {
   let request
 
   this.promise = new Promise(resolve => {
-    bus.on("receive", resolve)
-    bus.on("cancel", () => {
+    bus.once("receive", resolve)
+    bus.once("cancel", () => {
       resolve(null)
     })
   })
@@ -139,7 +139,7 @@ export function ApiSpawner(options) {
       const idx = spawnerState.queue.indexOf(placeholder)
       spawnerState.queue.splice(idx, 1)
     }
-    placeholder.on("finish", remove).on("cancel", remove)
+    placeholder.once("finish", remove).once("cancel", remove)
     const callback =
       typeof spawnerOptions.mode === "function"
         ? spawnerOptions.mode
